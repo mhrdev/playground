@@ -1,11 +1,16 @@
-EQUILATERAL = 1
-ISOSCELES = 2
-SCALENE = 3
+EQUILATERAL = "EQUILATERAL"  # TODO: make an enum
+ISOSCELES = "ISOSCELES"
+SCALENE = "SCALENE"
+
 
 def _is_number(x):
-    return isinstance(x, ( int, long, float ) )
+    """
+    :returns: True is x is a number
+    """
+    return isinstance(x, (int, long, float))
 
-def _validate_sides(a,b,c):
+
+def _validate_sides(a, b, c):
     """Validate sides can make a valid triangle"""
 
     if not a or not b or not c:
@@ -14,13 +19,12 @@ def _validate_sides(a,b,c):
     if not (_is_number(a) and _is_number(b) and _is_number(c)):
         raise ValueError("All side must be numbers")
 
-    if a<=0 or b<=0 or c<=0:
+    if a <= 0 or b <= 0 or c <= 0:
         raise ValueError("All sides lengths must have positive values")
 
-    if a+b < c or \
-        a+c < b or \
-        b+c < a:
+    if a + b < c or a + c < b or b + c < a:
         raise ValueError("sum of 2 shortes sides must greater or equals the longest side")
+
 
 def get_triangle_type(a, b, c):
     """Get triangle type
@@ -31,7 +35,7 @@ def get_triangle_type(a, b, c):
     :return: type of triangle
     """
 
-    _validate_sides(a,b,c)
+    _validate_sides(a, b, c)
 
     if a == b == c:
         return EQUILATERAL
