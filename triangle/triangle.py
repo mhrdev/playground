@@ -27,6 +27,8 @@ def get_triangle_type(a, b, c):
     :params: a: side a
     :params: b: side b
     :params: c: side c
+
+    :return: type of triangle
     """
 
     _validate_sides(a,b,c)
